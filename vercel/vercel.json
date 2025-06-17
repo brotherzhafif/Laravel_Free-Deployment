@@ -1,0 +1,63 @@
+{
+    "version": 2,
+    "framework": null,
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.3"
+        }
+    },
+    "routes": [
+        {
+            "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|ttf|woff|woff2|eot|otf|webp|avif))$",
+            "dest": "/public/$1"
+        },
+        {
+            "src": "/livewire/update",
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/livewire/(.*)",
+            "dest": "/public/vendor/livewire/$1"
+        },
+        {
+            "src": "/storage/(.*)",
+            "dest": "/public/storage/$1"
+        },
+        {
+            "src": "/favicon.ico",
+            "dest": "/public/favicon.ico"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ],
+    "env": {
+        "APP_NAME": "Laravel",
+        "APP_ENV": "local",
+        "APP_KEY": "generated-key-here",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://link-to-your-app.vercel.app",
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "",
+        "DB_PORT": "",
+        "DB_DATABASE": "",
+        "DB_USERNAME": "",
+        "DB_PASSWORD": "",
+        "FILESYSTEM_DISK": "",
+        "AWS_ACCESS_KEY_ID": "",
+        "AWS_SECRET_ACCESS_KEY": "",
+        "AWS_DEFAULT_REGION": "",
+        "AWS_BUCKET": "",
+        "AWS_URL": "",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp",
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr"
+    },
+    "outputDirectory": "public"
+}
