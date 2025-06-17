@@ -49,6 +49,19 @@ PHP_Serverless-Deployment/
 
 ---
 
+## ⚖️ **Render.com vs Vercel**
+
+| Fitur                              | **Render.com**                                | **Vercel** (Serverless)            |
+| ---------------------------------- | --------------------------------------------- | ---------------------------------- |
+| 🧠 Arsitektur                      | **Traditional server (container)**            | **Serverless (function-based)**    |
+| 🌐 Web Service                     | Menjalankan **server penuh** (PHP, Node, dll) | Menggunakan **fungsi (API route)** |
+| 🔁 Proses background (queue, cron) | ✅ Bisa pakai worker                           | ❌ Terbatas, butuh workaround       |
+| 🧩 Laravel Support                 | ✅ Native Laravel (Nginx + PHP-FPM)            | ⚠️ Butuh penyesuaian `vercel.json` |
+| 💡 State/Session di memory         | ✅ Bisa                                        | ❌ Tidak bisa (stateless)           |
+| 🧊 Cold Start                      | ❌ Tidak ada                                   | ✅ Ada (pertama kali akses lambat)  |
+| 💵 Biaya                           | Flat atau usage-based                         | Usage-based per fungsi             |
+
+
 ## 📚 Referensi
 
 - [Laravel Docs](https://laravel.com/docs)
