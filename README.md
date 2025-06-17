@@ -1,5 +1,7 @@
 # 🚀 Laravel 12 Deployment Examples: Vercel (Serverless) & Render.com (Docker)
 
+#codebase
+
 Repositori ini berisi contoh dan template untuk men-deploy Laravel 12 ke dua platform populer:
 
 - **Vercel** (serverless, PHP runtime)
@@ -55,12 +57,11 @@ PHP_Serverless-Deployment/
 | ---------------------------------- | --------------------------------------------- | ---------------------------------- |
 | 🧠 Arsitektur                      | **Traditional server (container)**            | **Serverless (function-based)**    |
 | 🌐 Web Service                     | Menjalankan **server penuh** (PHP, Node, dll) | Menggunakan **fungsi (API route)** |
-| 🔁 Proses background (queue, cron) | ✅ Bisa pakai worker                           | ❌ Terbatas, butuh workaround       |
-| 🧩 Laravel Support                 | ✅ Native Laravel (Nginx + PHP-FPM)            | ⚠️ Butuh penyesuaian `vercel.json` |
-| 💡 State/Session di memory         | ✅ Bisa                                        | ❌ Tidak bisa (stateless)           |
-| 🧊 Cold Start                      | ❌ Tidak ada                                   | ✅ Ada (pertama kali akses lambat)  |
+| 🔁 Proses background (queue, cron) | ✅ Bisa pakai worker                          | ❌ Terbatas, butuh workaround      |
+| 🧩 Laravel Support                 | ✅ Native Laravel (Nginx + PHP-FPM)           | ⚠️ Butuh penyesuaian `vercel.json` |
+| 💡 State/Session di memory         | ✅ Bisa                                       | ❌ Tidak bisa (stateless)          |
+| 🧊 Cold Start                      | ❌ Tidak ada                                  | ✅ Ada (pertama kali akses lambat) |
 | 💵 Biaya                           | Flat atau usage-based                         | Usage-based per fungsi             |
-
 
 ## 📚 Referensi
 

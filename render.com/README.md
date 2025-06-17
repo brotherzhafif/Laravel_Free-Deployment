@@ -95,5 +95,61 @@ Panduan ini menjelaskan cara men-deploy Laravel 12 menggunakan Docker di Render.
 
 ---
 
+## 🔄 Kebutuhan Laravel: Request Berkala (Cronjob, Scheduler, dsb) ✅
+
+Jika aplikasi Laravel kamu membutuhkan request berkala (misal: ping biar aplikasi tidak mati, auto-update, queue, scheduler, dsb), kamu bisa memanfaatkan fitur cron job di Render.
+
+### ✅ Cara Menjaga Laravel di Render Tetap Aktif (Anti "Tidur")
+
+Jika menggunakan Render Free Plan, aplikasi bisa "tidur" (sleep) jika tidak ada trafik selama 15 menit. Untuk mencegah ini:
+
+#### 🔁 Opsi 1: Gunakan Cron Job di Render (Native Feature)
+
+1. Masuk ke dashboard Render > klik tombol "New" > "Cron Job"
+2. Isi form:
+   - Name: `keep-awake`
+   - Schedule: setiap 5 menit (misal: `*/5 * * * *`)
+   - Command:
+     ```
+     curl https://your-app.onrender.com/
+     ```
+   - Environment: pilih sesuai kebutuhan
+
+Ini akan melakukan request ke aplikasi kamu secara berkala sehingga aplikasi dianggap aktif dan tidak tidur.
+
+#### 💡 Opsi 2: Gunakan Cron di Laravel (Task Scheduler)
+
+Jika sudah mengaktifkan Laravel Scheduler (`php artisan schedule:run`), kamu juga bisa setup cron job di Render:
+
+- Di bagian "Advanced" saat buat web service, tambahkan cron job:
+  ```
+  * * * * * cd /opt/render/project/src && php artisan schedule:run >> /dev/null 2>&1
+  ```
+- Ini khusus untuk task Laravel, bukan untuk keep-alive. Untuk menjaga aplikasi tetap hidup, tetap gunakan `curl` seperti opsi 1.
+
+#### 🔒 Catatan Penting
+
+- Free Plan di Render hanya tidur jika idle, tidak tidur jika aktif terus.
+- Render tidak membatasi cron job selama tidak membebani sistem.
+- Bisa pakai `curl`, `wget`, atau script Laravel sendiri untuk ping balik ke URL kamu.
+
+#### Contoh Cron Job: Ping Aplikasi Tiap 5 Menit
+
+```
+curl -fsS https://your-app.onrender.com/ > /dev/null
+```
+
+Taruh di cron bawaan Render, atau bisa juga dari server luar (UptimeRobot, GitHub Actions, dsb).
+
+#### 🚀 Kesimpulan
+
+- Bisa pakai cron job di Render untuk menjaga Laravel tetap aktif (anti tidur).
+- Jalankan `curl` ke URL aplikasi kamu secara berkala.
+- Pastikan pakai `https://...` dan responsnya tidak error (200 OK cukup).
+
+Jika butuh file setup lengkap untuk deploy Laravel ke Render (dengan cron + start command), silakan request!
+
+---
+
 **Selesai!**  
 Aplikasi Laravel 12 Anda sekarang berjalan di Render.com dengan Docker.
