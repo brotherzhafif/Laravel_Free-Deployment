@@ -147,8 +147,6 @@ Taruh di cron bawaan Render, atau bisa juga dari server luar (UptimeRobot, GitHu
 - Jalankan `curl` ke URL aplikasi kamu secara berkala.
 - Pastikan pakai `https://...` dan responsnya tidak error (200 OK cukup).
 
-Jika butuh file setup lengkap untuk deploy Laravel ke Render (dengan cron + start command), silakan request!
-
 ---
 
 **Selesai!**  
